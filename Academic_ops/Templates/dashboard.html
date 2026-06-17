@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 class="mb-4">Welcome {{ role }}</h3>
+
+<div class="row g-4">
+
+    <!-- Total Students -->
+    <div class="col-md-4">
+        <a href="/students" style="text-decoration:none;">
+            <div class="card bg-primary text-white shadow animate__animated animate__fadeInUp">
+                <div class="card-body text-center">
+                    <h5>Total Students</h5>
+                    <h2>{{ total_students }}</h2>
+                </div>
+            </div>
+        </a>
+    
+        </div>
+    </div>
+
+    <!-- Attendance Records -->
+    <div class="col-md-4">
+        <a href="/attendance" class="text-decoration-none">
+            <div class="card bg-success text-white shadow h-100">
+                <div class="card-body text-center">
+                    <h5>Attendance Records</h5>
+                    <h2>{{ total_attendance }}</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+    <a href="/attendance_report" class="text-decoration-none">
+        <div class="card bg-info text-white shadow h-100">
+            <div class="card-body text-center">
+                <h5>Attendance Report</h5>
+                <h2>View</h2>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <!-- Marks Entries -->
+    <div class="col-md-4">
+        <a href="/marks" class="text-decoration-none">
+            <div class="card bg-warning text-dark shadow h-100">
+                <div class="card-body text-center">
+                    <h5>Marks Entries</h5>
+                    <h2>{{ total_marks }}</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Passed Students -->
+    <div class="col-md-4">
+        <a href="/result_report" class="text-decoration-none">
+            <div class="card bg-info text-white shadow h-100">
+                <div class="card-body text-center">
+                    <h5>Result Report</h5>
+                    <h2>{{ total_passed }}</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+    <a href="/at_risk" class="text-decoration-none">
+        <div class="card bg-danger text-white shadow h-100">
+            <div class="card-body text-center">
+                <h5>At-Risk Students</h5>
+                <h2>{{ at_risk }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+
+
+</div>
+
+{% endblock %}

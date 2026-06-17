@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Final Result Report</h2>
+
+<div class="card shadow">
+    <div class="card-body">
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Roll Number</th>
+                    <th>Total Marks</th>
+                    <th>Average</th>
+                    <th>Result</th>
+                    <th>Performance</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for row in report %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ "%.2f"|format(row[3]) }}</td>
+
+                    <!-- RESULT -->
+                    <td>
+                        {% if row[4] == 'Pass' %}
+                            <span class="badge bg-success">Pass</span>
+                        {% else %}
+                            <span class="badge bg-danger">Fail</span>
+                        {% endif %}
+                    </td>
+
+                    <!-- PERFORMANCE -->
+                    <td>
+                        {% if row[5] == 'Excellent' %}
+                            <span class="badge bg-success">Excellent</span>
+                        {% elif row[5] == 'Average' %}
+                            <span class="badge bg-warning">Average</span>
+                        {% else %}
+                            <span class="badge bg-danger">Poor</span>
+                        {% endif %}
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}

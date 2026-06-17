@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Attendance Percentage Report</h2>
+
+<div class="card shadow">
+    <div class="card-body">
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Roll Number</th>
+                    <th>Total Classes</th>
+                    <th>Present</th>
+                    <th>Percentage</th>
+                    <th>Status</th> <!-- NEW COLUMN -->
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for row in report %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ "%.2f"|format(row[4]) }}%</td>
+
+                    <!-- NEW LOGIC -->
+                    <td>
+                        {% if row[5] == 'Low' %}
+                            <span class="badge bg-danger">Low Attendance</span>
+                        {% else %}
+                            <span class="badge bg-success">Safe</span>
+                        {% endif %}
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}

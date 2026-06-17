@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Student</title>
+</head>
+<body>
+
+<h2>Edit Student</h2>
+
+<form method="POST">
+    Name:<br>
+    <input type="text" name="name" value="{{ student[1] }}"><br><br>
+
+    Roll Number:<br>
+    <input type="text" name="roll" value="{{ student[2] }}"><br><br>
+
+    Branch:<br>
+    <input type="text" name="branch" value="{{ student[3] }}"><br><br>
+
+    Year:<br>
+    <input type="number" name="year" value="{{ student[4] }}"><br><br>
+
+    <button type="submit">Update Student</button>
+</form>
+
+<br>
+<a href="/students">Back</a>
+
+</body>
+</html>

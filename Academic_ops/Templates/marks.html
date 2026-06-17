@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Marks Entry</h2>
+
+<!-- FORM -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+
+        <form method="POST">
+
+            <div class="mb-3">
+                <label class="form-label">Student</label>
+                <select name="student_id" class="form-select">
+                    {% for student in students %}
+                        <option value="{{ student[0] }}">
+                            {{ student[1] }} ({{ student[2] }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Subject</label>
+                <input type="text" name="subject" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Marks</label>
+                <input type="number" name="marks" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-warning">Save Marks</button>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- TABLE -->
+<h3>Marks Records</h3>
+
+<div class="card shadow">
+    <div class="card-body">
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Roll</th>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for row in records %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+
+                    <td>
+                        {% if row[4] >= 75 %}
+                            <span class="badge bg-success">{{ row[4] }}</span>
+                        {% elif row[4] >= 50 %}
+                            <span class="badge bg-warning text-dark">{{ row[4] }}</span>
+                        {% else %}
+                            <span class="badge bg-danger">{{ row[4] }}</span>
+                        {% endif %}
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}
